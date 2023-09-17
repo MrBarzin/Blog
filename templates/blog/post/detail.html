@@ -9,6 +9,18 @@
     </p>
     {{ post.body|linebreaks }}  <br>
     <a href="{% url 'blog:post_share' post.id %}" role="button" class="button is-info">Share </a><br>
+    <h2>Similar posts : </h2>
+    <table>
+        <tbody>
+        {% for post in similar_posts %}
+            <tr>
+                <a style="font-size: 24px;" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </tr>
+        </tbody>
+        {% empty %}
+            There are no similar posts available yet.
+        {% endfor %}
+    </table>
     {% with comments.count as total_comments %}
         <h2>
             {{ total_comments }} comment{{ total_comments|pluralize }} 
