@@ -8,6 +8,7 @@ from taggit.models import Tag
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.db.models import Count 
 
+
 def post_list(request,tag_slug=None):
     post_list = Post.published.all()
     tag = None
